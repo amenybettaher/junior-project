@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, {useState} from 'react'
+import Cakes from './components/Cakes.jsx'
+import AddCake from "./components/AddCake.jsx";
+import Update from './components/Update.jsx'
+import logo from '../src/logo/oh ya.png'
+
 
 function App() {
+  const [view, setView] = useState('Cakes');
+
+  const changeView = (newView) => {
+    setView(newView);
+  };
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+
+       <img className='logo' src={logo}/>
+        <button onClick={() => changeView("Cakes")}>Cakes</button>
+        <button onClick={() => changeView("AddCake")}>Add Cake</button>
+        <button onClick={() => changeView("Update")}>Update Cake</button>
+      </nav>
+      <div>
+        {view === "Cakes" && <Cakes />}
+        {view === "AddCake" && <AddCake changeView={changeView} />}
+        {view === "Update" && <Update changeView={changeView} />}
+      </div>
     </div>
-  );
+ );
 }
 
-export default App;
+export default App
