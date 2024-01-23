@@ -19,6 +19,15 @@ code {
   margin-top: auto;
 }
 
+.home img {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+  margin-top: 7%;
+}
+
+
 .Cakes img  {
   width: 340px;
   height: 300px;
@@ -26,45 +35,96 @@ code {
  
   }
   .Cakes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 16px;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the start of the container */
+    background-color: rgb(7, 0, 0);
+    padding: 16px;
+  }
+  
+  .cake {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cake h1 {
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Lucida Handwriting';
+    margin: 0;
+    padding: 16px;
+  }
+  
+  .cake img {
+    width: 100%;
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image covers the specified height */
+  }
+  
+  .cake span {
+    flex: 1;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 7%;
+  }
+  
+  .delete {
+    background-image: linear-gradient(144deg, #470203, #391f01 50%, #fca94a);
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    margin: auto;
+    margin-bottom: 16px;
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    user-select: none;
+  }
+  
+  .delete:hover {
+    background-color: #444;
+  }
+  
  
-   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-   grid-template-rows: repeat(3, 300px);
-   grid-gap: 16px;
-   display: flex;
-   justify-content: space-between;
- 
-  background-color: rgb(0, 0, 0);
- }
- 
- 
- 
- .cake {
-   display: grid;
-   flex-direction: column;
-   color: rgb(255, 255, 255);
-   text-align: center;
-   margin-top: 5%;
- }
- .cake h1 {
-   text-align:center;
-   font-size: x-large;
-   font-family: Lucida Handwriting;
- }
- img{
-   margin-top: 2%;
-   width :70% ;
-   display: block;
-   margin-left: auto;
-   margin-right: auto;
- }
- 
- 
- .cake span {
-   flex: 1;
-   color: rgb(255, 255, 255);
-   text-align: center;
- }
- 
+ .add {
+  position: relative;
+}
+
+.image-overlay {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+.image-overlay img {
+  width: 100%;
+  height: auto; 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
  .App {
    font-family: Arial, sans-serif;
    display: flex;
@@ -121,12 +181,12 @@ code {
  .add input {
    
    color: #ffffff;
-   border: 2px solid #1506dc;
+   border: 2px solid #e4c89c;
    border-radius: 10px;
    padding: 10px 25px;
    background: transparent;
    max-width: 190px;
-   box-shadow: 2px 2px 15px #0b07ff inset;
+   box-shadow: 2px 2px 15px #855303 inset;
    
  }
  
@@ -139,7 +199,7 @@ code {
    
    align-items: center;
    appearance: none;
-   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+   background-image: radial-gradient(100% 100% at 100% 0, #e3970a 0, #70440a 100%);
    border: 0;
    border-radius: 6px;
    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
@@ -181,3 +241,88 @@ code {
    box-shadow: #3c4fe0 0 3px 7px inset;
    transform: translateY(2px);
  }
+
+
+.delete {
+  align-items: center;
+  background-image: linear-gradient(144deg,#470203, #391f01 50%,#fca94a);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(231, 194, 115, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 50%;
+  min-width: 140px;
+  padding: 10px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-left: 19%;
+}
+
+.delete:active,
+.delete:hover {
+  outline: 0;
+}
+
+.delete span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.delete:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .delete {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+/*search :*/ 
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.search input {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 4px; 
+  margin-right: 6px;
+}
+
+.search button {
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #000000;
+  box-shadow: 1px 1px 2px #ccc;
+  color: #fff;
+  margin: auto;
+ 
+  
+}
+
+
